@@ -122,7 +122,7 @@ output = {
     "tests": tests
 }
 
-output_path = "/home/useing123/Desktop/higgsfield-memory/data/longmemeval_s_cleaned.json"
+output_path = os.path.join(DATA_DIR, "longmemeval_s_cleaned.json")
 os.makedirs(os.path.dirname(output_path), exist_ok=True)
 with open(output_path, "w") as f:
     json.dump(output, f, indent=2)
@@ -139,7 +139,7 @@ for limit in [100, 50]:
         "tests": tests[:limit]
     }
     
-    small_path = f"/home/useing123/Desktop/higgsfield-memory/data/longmemeval_{limit}.json"
+    small_path = os.path.join(DATA_DIR, f"longmemeval_{limit}.json")
     with open(small_path, "w") as f:
         json.dump(small_output, f, indent=2)
     
