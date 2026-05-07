@@ -6,9 +6,18 @@ This document outlines two architectures:
 
 ---
 
-## 1. Current Alpha Architecture (v1.2.1)
+## 1. Current Alpha Architecture (v2.0.0)
 
-This version works but suffers from a major performance bottleneck, making it unsuitable for production.
+This version works and has been refactored into a modular structure for better maintainability. However, it still suffers from a major performance bottleneck, making it unsuitable for production.
+
+### Code Structure
+The codebase is organized into the following modules:
+-   `src/main.py`: FastAPI application, endpoints, and middleware.
+-   `src/database.py`: All database interactions.
+-   `src/llm.py`: All Azure OpenAI API interactions.
+-   `src/search.py`: Semantic and BM25 search logic.
+-   `src/logic.py`: Core business logic.
+-   `src/errors.py`: Custom error classes.
 
 ### Architecture Flow
 

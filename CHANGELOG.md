@@ -1,5 +1,35 @@
 # Changelog
 
+## v2.0.0 — Personal Build: Major Refactoring & Stability
+
+**What changed:** The entire codebase was refactored from a single `main.py` file into a modular and maintainable structure. The service is now fully containerized with Docker and has been successfully tested.
+
+**Why:** The original monolithic structure was difficult to maintain and debug. This refactoring improves separation of concerns, making the codebase easier to understand, test, and extend.
+
+**Key Changes:**
+1.  **Codebase Modularization:**
+    -   `src/database.py`: Handles all SQLite database interactions.
+    -   `src/llm.py`: Manages all Azure OpenAI API calls for fact extraction and embeddings.
+    -   `src/search.py`: Contains all search-related logic, including semantic and BM25 search.
+    -   `src/logic.py`: Houses core business logic, such as user document generation.
+    -   `src/errors.py`: Defines custom error classes.
+    -   `src/main.py`: Streamlined to contain only the FastAPI app, endpoints, and middleware.
+
+2.  **Dockerization & Testing:**
+    -   The service is now fully containerized with Docker, ensuring a consistent and reproducible environment.
+    -   The API has been tested end-to-end, from ingesting data with `/turns` to retrieving it with `/recall`.
+
+3.  **Bug Fixes & Improvements:**
+    -   Resolved a circular import issue that was preventing the application from starting.
+    -   Fixed a bug in the fact categorization logic that was causing personal information (like names) to be missed.
+    -   Corrected environment variable handling for the Docker container.
+    -   Improved the fact extraction prompt for better accuracy.
+
+**Result:**
+- The service is now stable, maintainable, and working as expected.
+- The API is fully functional and has been tested with the updated architecture.
+
+
 ## v0.1.0 - Bare Minimum
 
 I've initialized repository. Created docker container, smoke tests, and basic contract endpoints.
